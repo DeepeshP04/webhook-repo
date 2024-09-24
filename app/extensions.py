@@ -1,4 +1,6 @@
 from flask_pymongo import PyMongo
 
 # Setup MongoDB here
-# mongo = PyMongo(uri="mongodb://localhost:27017/database")
+DB_NAME = "database"
+
+mongo = PyMongo(uri=f"mongodb://localhost:27017/{DB_NAME}")
