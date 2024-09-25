@@ -27,6 +27,7 @@ def receiver():
         return jsonify({"status": "success"}), 200
     
     elif "action" in data and "pull_request" in data:
+        action_type = data["action"]
         pull_request = data["pull_request"]
         
         request_id = pull_request["id"]
@@ -42,10 +43,23 @@ def receiver():
             to_branch=to_branch
         )
         
+        if action_type == "closed" and pull_request.get("merged"):
+        
+            merge_data = GithubActionShema(
+                request_id=request_id,
+                author=author,
+                to_branch=to_branch,
+                from_branch=from_branch,
+                action="merged"
+            )
+            save_to_database(merge_data.to_dict())
+            
+            return jsonify({"status": "success"}), 200
+        
         save_to_database(pull_data.to_dict())
         
         return jsonify({"status": "success"}), 200
-    
+        
     else:
         return jsonify({"stauts": "error", "message": "Invalid data"}), 400
 
