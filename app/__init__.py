@@ -1,7 +1,8 @@
 from flask import Flask
 
 from app.webhook.routes import webhook
-from app.extensions import mongo
+from .views import views
+from app.extensions import initialize_db
 
 # Creating our flask app
 def create_app():
@@ -10,7 +11,8 @@ def create_app():
     
     # registering all the blueprints
     app.register_blueprint(webhook)
+    app.register_blueprint(views)
     
-    mongo.init_app(app)
+    initialize_db(app)
     
     return app
