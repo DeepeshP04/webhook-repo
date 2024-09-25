@@ -42,7 +42,7 @@ class WebhookTestCase(unittest.TestCase):
             "action": "closed",
             "pull_request": {
                 "merged": True,
-                "id": 1,
+                "id": 2,
                 "user": {"login": "Travis"},
                 "head": {"ref": "feature-branch"},
                 "base": {"ref": "main"}
