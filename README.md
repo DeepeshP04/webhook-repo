@@ -31,7 +31,7 @@ This repository is for handling various GitHub events, saves the data in mongodb
 
 1. **Clone the repository**:
 
-   git clone https://github.com/yourusername/webhook-repo.git
+   git clone <repo-url>
    cd webhook-repo
 
 2. **Create a virtual environment**:
