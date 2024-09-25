@@ -1,6 +1,6 @@
 from datetime import datetime
 
-class GithubActionShema():
+class GithubActionSchema():
     def __init__(self, request_id, author, action, from_branch, to_branch):
         self.request_id = request_id
         self.author = author
